@@ -5,7 +5,10 @@ interface IProps {
 }
 
 const Header: React.FC<IProps> = (props: IProps) => (
-  <h1>Hello, {props.name}! Welcome to your first Continuous Integration/Continuous Deployment (CI/CD) pipeline.</h1>
+  <React.Fragment>
+    <h1>Hello, {props.name}!</h1> 
+    <h2>Welcome to your first Continuous Integration/Continuous Deployment (CI/CD) pipeline.</h2>
+  </React.Fragment>
 );
 
 Header.defaultProps = {

@@ -1,32 +1,52 @@
 [![Build Status](https://travis-ci.org/lohs/demo.svg?branch=master)](https://travis-ci.org/lohs/demo)
 <br>
 hot reload works w/ dev but not test
+
 # Use Docker Compose
 ```
 docker-compose up
 ```
+
 ### Use this to force when changing docker-compose.yml file
 ```
 docker-compose up --build 
 ```
+
 ### Work on a branch
 ```
 git checkout -b feature
 git add .
 git commit -m "changed on feature branch"
+git push origin feature
 ```
+
+### Delete local branch
+```
+git branch -d <local-branch>
+force delete local branch
+git branch -D <local-branch>
+```
+
+### Delete remote branch
+```
+git push origin --delete <remote-branch-name>
+```
+
 ## Run Tests Manually
 hot reloading doesn't work on test suite, manually attach to container to run tests
 issue with docker 2.1.0.5 but needed for OCH to run properly
+
 ```
 docker exec -it CONTAINER_ID sh
 npm run test
 ```
+
 ## Build optimized app for production
 ```
 docker build .
 docker run -p 8080:80 IMAGE_ID 
 ```
+
 ### Attach to running containers
 ```
 docker ps
