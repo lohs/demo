@@ -9,7 +9,13 @@ docker-compose up
 ```
 docker-compose up --build 
 ```
-## Run Tests
+### Work on a branch
+```
+git checkout -b feature
+git add .
+git commit -m "changed on feature branch"
+```
+## Run Tests Manually
 hot reloading doesn't work on test suite, manually attach to container to run tests
 issue with docker 2.1.0.5 but needed for OCH to run properly
 ```

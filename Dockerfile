@@ -19,7 +19,7 @@ RUN npm run build
 #Pull nginx docker image from server
 FROM nginx
 
-#Web port
+#Web port for AWS EBS
 EXPOSE 80
 
 #Copy build optimized files into default nginx folder
