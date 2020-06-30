@@ -5,7 +5,7 @@ interface IProps {
 }
 
 const Header: React.FC<IProps> = (props: IProps) => (
-  <h1>Hello, {props.name}! Welcome to React and TypeScript.</h1>
+  <h1>Hello, {props.name}! Welcome to your first Continuous Integration/Continuous Deployment (CI/CD) pipeline.</h1>
 );
 
 Header.defaultProps = {

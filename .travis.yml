@@ -1,0 +1,12 @@
+language: generic
+sudo: required
+services:
+    #tell TravisCI to install docker
+    - docker
+
+before_install:
+    #-t cicd tags image; use instead of image id
+    - docker build -t cicd -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true cicd npm run test

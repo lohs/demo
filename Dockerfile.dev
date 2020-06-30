@@ -1,0 +1,17 @@
+#Pull node docker image from server
+FROM node:alpine
+
+#Working directory in docker image
+WORKDIR '/app'
+
+#Copy package.json and package-lock.json from local directory to docker image
+COPY package*.json ./
+
+#Install node modules/dependencies 
+RUN npm install
+
+#Copy source files
+COPY ./ ./
+
+#Start development server
+CMD ["npm", "run", "start"]

@@ -1,0 +1,34 @@
+version: '3'
+services: 
+    #first container
+    web:
+        #restart: unless-stopped
+        build:
+            #look in same directory as docker-compose.yml file
+            context: .
+            dockerfile: Dockerfile.dev
+        ports:
+            #map port 3000 host to port 3000 inside container
+            - "3000:3000"
+        volumes:
+            #use container's node module directory
+            - /app/node_modules
+            #map all other files to local directory
+            - .:/app
+        #fix react app exiting when starting with docker compose
+        stdin_open: true
+        #fix for hot reloading react app in windows
+        environment: 
+            - CHOKIDAR_USEPOLLING=true
+    #second container
+    tests:
+        #restart: unless-stopped
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        volumes: 
+                #use container's node module directory
+                - /app/node_modules
+                #map all other files to local directory
+                - .:/app
+        command: ["npm", "run", "test"]

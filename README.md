@@ -1,5 +1,43 @@
-VDI network
+hot reload works w/ dev but not test
+# Use Docker Compose
+```
+docker-compose up
+```
+### Use this to force when changing docker-compose.yml file
+```
+docker-compose up --build 
+```
+## Run Tests
+hot reloading doesn't work on test suite, manually attach to container to run tests
+issue with docker 2.1.0.5 but needed for OCH to run properly
+```
+docker exec -it CONTAINER_ID sh
+npm run test
+```
+## Build optimized app for production
+```
+docker build .
+docker run -p 8080:80 IMAGE_ID 
+```
+### Attach to running containers
+```
+docker ps
+docker exec -it CONTAINER_ID sh
+```
+IMAGE_ID from docker build <br>
+CONTAINER_ID from docker ps -a
 
+# Manual Docker Commands
+## Build development server
+```
+docker build -f Dockerfile.dev .
+docker build -t devserver -f Dockerfile.dev .
+```
+## Run development server
+```
+docker run -it -p 3000:3000 IMAGE_ID
+docker run -it -p 3000:3000 -v /app/node_modules -v /$(pwd):/app IMAGE_ID
+```
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
