@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/lohs/demo.svg?branch=master)](https://travis-ci.org/lohs/demo)
 hot reload works w/ dev but not test
 # Use Docker Compose
 ```
