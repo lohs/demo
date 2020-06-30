@@ -10,3 +10,17 @@ before_install:
 
 script:
     - docker run -e CI=true cicd npm run test
+
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-1"
+    app: "demo"
+    env: "Demo-env"
+    bucket_name: "elasticbeanstalk-us-east-1-354456256274"
+    bucket_path: "demo"
+    on:
+        # only deploy when master branch gets new code
+        branch: master
+
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
